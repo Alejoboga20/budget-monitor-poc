@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Error } from './Error';
+import shortid from 'shortid';
 
 const msg = 'Both fields are mandatory and should be valid values';
 
-export const Form = () => {
+export const Form = ({ handleAddNewExpense }) => {
   const [expense, setExpense] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [error, setError] = useState(false);
@@ -15,6 +16,17 @@ export const Form = () => {
       setError(true);
       return;
     }
+
+    const expenseObject = {
+      expense,
+      quantity,
+      id: shortid.generate(),
+    };
+
+    handleAddNewExpense(expenseObject);
+    setExpense('');
+    setQuantity(0);
+    setError(false);
   };
 
   return (

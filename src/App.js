@@ -6,6 +6,11 @@ export const App = () => {
   const [budget, setBudget] = useState(0);
   const [rest, setRest] = useState(0);
   const [showQuestion, setShowQuestion] = useState(true);
+  const [expenses, setExpenses] = useState([]);
+
+  const handleAddNewExpense = (expense) => {
+    setExpenses([...expenses, expense]);
+  };
 
   return (
     <div className='container'>
@@ -24,7 +29,7 @@ export const App = () => {
         ) : (
           <div className='row'>
             <div className='one-half column'>
-              <Form />
+              <Form handleAddNewExpense={handleAddNewExpense} />
             </div>
 
             <div className='one-half column'>2</div>
