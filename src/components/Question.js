@@ -3,23 +3,25 @@ import { Error } from './Error';
 
 const msg = 'Invalid Budget. Please enter a valid value.';
 
-export const Question = () => {
-  const [budget, setBudget] = useState(0);
+export const Question = ({ setBudget, setRest }) => {
+  const [quantity, setQuantity] = useState(0);
   const [error, setError] = useState(false);
 
-  const handleSetBudget = (e) => {
-    setBudget(parseInt(e.target.value));
+  const handleSetQuantity = (e) => {
+    setQuantity(parseInt(e.target.value));
   };
 
-  const handleAddBudget = (e) => {
+  const handleAddQuantity = (e) => {
     e.preventDefault();
 
-    if (budget < 1 || isNaN(budget)) {
+    if (quantity < 1 || isNaN(quantity)) {
       setError(true);
       return;
     }
 
     setError(false);
+    setBudget(quantity);
+    setRest(quantity);
   };
 
   return (
@@ -28,13 +30,13 @@ export const Question = () => {
 
       {error ? <Error msg={msg} /> : null}
 
-      <form onSubmit={handleAddBudget}>
+      <form onSubmit={handleAddQuantity}>
         <input
           type='number'
           className='u-full-width'
           placeholder='budget'
-          onChange={handleSetBudget}
-          value={budget}
+          onChange={handleSetQuantity}
+          value={quantity}
         />
         <input
           type='submit'
