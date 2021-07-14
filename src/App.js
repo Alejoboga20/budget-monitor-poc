@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ExpenseControl } from './components/ExpenseControl';
 import { Form } from './components/Form';
 import { List } from './components/List';
 import { Question } from './components/Question';
@@ -35,6 +36,7 @@ export const App = () => {
 
             <div className='one-half column'>
               <List expenses={expenses} />
+              <ExpenseControl budget={budget} rest={rest} />
             </div>
           </div>
         )}
