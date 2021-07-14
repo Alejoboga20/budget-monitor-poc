@@ -20,7 +20,7 @@ export const App = () => {
     }
 
     setCreateExpense(false);
-  }, [expense, expenses, createExpense]);
+  }, [expense, expenses, createExpense, rest]);
 
   return (
     <div className='container'>
