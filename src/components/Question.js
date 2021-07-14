@@ -4,7 +4,7 @@ import { Error } from './Error';
 const msg = 'Invalid Budget. Please enter a valid value.';
 
 export const Question = ({ setBudget, setRest, setShowQuestion }) => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState();
   const [error, setError] = useState(false);
 
   const handleSetQuantity = (e) => {
