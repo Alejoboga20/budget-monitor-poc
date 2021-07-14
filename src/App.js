@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ExpenseControl } from './components/ExpenseControl';
 import { Form } from './components/Form';
 import { List } from './components/List';
@@ -9,10 +9,16 @@ export const App = () => {
   const [rest, setRest] = useState(0);
   const [showQuestion, setShowQuestion] = useState(true);
   const [expenses, setExpenses] = useState([]);
+  const [createExpense, setCreateExpense] = useState(false);
+  const [expense, saveExpense] = useState({});
 
-  const handleAddNewExpense = (expense) => {
-    setExpenses([...expenses, expense]);
-  };
+  useEffect(() => {
+    if (createExpense) {
+      setExpenses([...expenses, expense]);
+    }
+
+    setCreateExpense(false);
+  }, [expense, createExpense]);
 
   return (
     <div className='container'>
@@ -31,7 +37,10 @@ export const App = () => {
         ) : (
           <div className='row'>
             <div className='one-half column'>
-              <Form handleAddNewExpense={handleAddNewExpense} />
+              <Form
+                saveExpense={saveExpense}
+                setCreateExpense={setCreateExpense}
+              />
             </div>
 
             <div className='one-half column'>

@@ -4,7 +4,7 @@ import shortid from 'shortid';
 
 const msg = 'Both fields are mandatory and should be valid values';
 
-export const Form = ({ handleAddNewExpense }) => {
+export const Form = ({ saveExpense, setCreateExpense }) => {
   const [expense, setExpense] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [error, setError] = useState(false);
@@ -23,10 +23,11 @@ export const Form = ({ handleAddNewExpense }) => {
       id: shortid.generate(),
     };
 
-    handleAddNewExpense(expenseObject);
+    saveExpense(expenseObject);
     setExpense('');
     setQuantity(0);
     setError(false);
+    setCreateExpense(true);
   };
 
   return (
