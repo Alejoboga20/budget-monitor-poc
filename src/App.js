@@ -15,10 +15,12 @@ export const App = () => {
   useEffect(() => {
     if (createExpense) {
       setExpenses([...expenses, expense]);
+      const restBudget = rest - expense.quantity;
+      setRest(restBudget);
     }
 
     setCreateExpense(false);
-  }, [expense, createExpense]);
+  }, [expense, expenses, createExpense]);
 
   return (
     <div className='container'>
