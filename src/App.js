@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExpenseControl } from './components/ExpenseControl';
 import { Form } from './components/Form';
+import { Header } from './components/Header';
 import { List } from './components/List';
 import { Question } from './components/Question';
 import { useApp } from './useApp';
@@ -20,10 +21,7 @@ export const App = () => {
 
   return (
     <div className='container'>
-      <header>
-        <h1>Weekly Expenses</h1>
-      </header>
-      <hr />
+      <Header headerTitle='Weekly Expenses' />
 
       <div className='contenido-principal contenido'>
         {showQuestion ? (
