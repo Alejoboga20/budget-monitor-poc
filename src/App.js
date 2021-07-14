@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ExpenseControl } from './components/ExpenseControl';
 import { Form } from './components/Form';
 import { List } from './components/List';
 import { Question } from './components/Question';
+import { useApp } from './useApp';
 
 export const App = () => {
-  const [budget, setBudget] = useState(0);
-  const [rest, setRest] = useState(0);
-  const [showQuestion, setShowQuestion] = useState(true);
-  const [expenses, setExpenses] = useState([]);
-  const [createExpense, setCreateExpense] = useState(false);
-  const [expense, saveExpense] = useState({});
-
-  useEffect(() => {
-    if (createExpense) {
-      setExpenses([...expenses, expense]);
-      const restBudget = rest - expense.quantity;
-      setRest(restBudget);
-    }
-
-    setCreateExpense(false);
-  }, [expense, expenses, createExpense, rest]);
+  const [
+    budget,
+    setBudget,
+    rest,
+    setRest,
+    showQuestion,
+    setShowQuestion,
+    expenses,
+    setCreateExpense,
+    saveExpense,
+  ] = useApp();
 
   return (
     <div className='container'>
