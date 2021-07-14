@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from './components/Form';
+import { List } from './components/List';
 import { Question } from './components/Question';
 
 export const App = () => {
@@ -32,7 +33,9 @@ export const App = () => {
               <Form handleAddNewExpense={handleAddNewExpense} />
             </div>
 
-            <div className='one-half column'>2</div>
+            <div className='one-half column'>
+              <List expenses={expenses} />
+            </div>
           </div>
         )}
       </div>
